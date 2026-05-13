@@ -11,6 +11,7 @@
     "require": {
         "php": "^8.3",
         "laravel/framework": "^13.7",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^3.0",
         "nwidart/laravel-modules": "^13.0",
         "spatie/laravel-permission": "^7.4"
@@ -29,7 +30,13 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Modules\\": "Modules/"
+            "Modules\\": "Modules/",
+            "Modules\\Blog\\App\\": "Modules/Blog/app/",
+            "Modules\\Shop\\App\\": "Modules/Shop/app/",
+            "Modules\\Users\\App\\": "Modules/Users/app/",
+            "Modules\\Blog\\Database\\Seeders\\": "Modules/Blog/database/seeders/",
+            "Modules\\Shop\\Database\\Seeders\\": "Modules/Shop/database/seeders/",
+            "Modules\\Users\\Database\\Seeders\\": "Modules/Users/database/seeders/"
         }
     },
     "autoload-dev": {

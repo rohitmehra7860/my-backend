@@ -3,6 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Shop\App\Http\Controllers\ShopController;
 
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('shops', ShopController::class)->names('shop');
+Route::middleware(['auth:sanctum', 'permission:manage shop'])->group(function () {
+    Route::apiResource('products', ShopController::class);
 });
