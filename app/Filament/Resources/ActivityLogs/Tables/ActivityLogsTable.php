@@ -14,6 +14,9 @@ class ActivityLogsTable
     {
         return $table
             ->columns([
+                TextColumn::make('index')
+                    ->label('S.No.')
+                    ->rowIndex(),
                 TextColumn::make('causer.name')
                     ->label('User')
                     ->searchable()

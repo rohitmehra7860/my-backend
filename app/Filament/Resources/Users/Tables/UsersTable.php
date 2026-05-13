@@ -16,6 +16,9 @@ class UsersTable
     {
         return $table
             ->columns([
+                TextColumn::make('index')
+                    ->label('S.No.')
+                    ->rowIndex(),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('email')

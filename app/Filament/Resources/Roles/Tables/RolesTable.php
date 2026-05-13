@@ -15,6 +15,9 @@ class RolesTable
     {
         return $table
             ->columns([
+                TextColumn::make('index')
+                    ->label('S.No.')
+                    ->rowIndex(),
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
