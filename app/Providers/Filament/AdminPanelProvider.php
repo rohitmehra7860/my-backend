@@ -54,7 +54,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-                'role:admin|editor',
+                'role_or_permission:admin|editor|view dashboard',
             ]);
     }
 }

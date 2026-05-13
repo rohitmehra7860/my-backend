@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Roles\Schemas;
 
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class RoleForm
@@ -10,7 +12,17 @@ class RoleForm
     {
         return $schema
             ->components([
-                //
+                TextInput::make('name')
+                    ->required()
+                    ->unique(ignoreRecord: true),
+                TextInput::make('guard_name')
+                    ->default('web')
+                    ->required(),
+                Select::make('permissions')
+                    ->relationship('permissions', 'name')
+                    ->multiple()
+                    ->preload()
+                    ->label('Permissions'),
             ]);
     }
 }
