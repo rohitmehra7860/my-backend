@@ -38,7 +38,6 @@ class User extends Authenticatable
     {
         return LogOptions::defaults()
             ->logAll()
-            ->logOnlyDirty()
-            ->dontSubmitEmptyLogs();
+            ->logOnlyDirty();
     }
 }

@@ -1,0 +1,14 @@
+[90m= [39m[34;4mIlluminate\Database\Eloquent\Collection[39;24m {#10127
+    [34mall[39m: [
+      [34;4mApp\Models\User[39;24m {#10121
+        [34mid[39m: [35m5[39m,
+        [34mname[39m: [32m"[39m[32mnew [39m[32m"[39m,
+        [34memail[39m: [32m"[39m[32mnew@new.com[39m[32m"[39m,
+        [34memail_verified_at[39m: [36mnull[39m,
+        #[33mpassword[39m: [32m"[39m\$[32m2y[39m\$[32m12[39m\$[32mipvz6dquI3KQJ8rp43ABKOq8Kr..ZCdr2gbrP38a0gkOVXP41G.5.[39m[32m"[39m,
+        #[33mremember_token[39m: [36mnull[39m,
+        [34mcreated_at[39m: [32m"[39m[32m2026-05-13 12:55:27[39m[32m"[39m,
+        [34mupdated_at[39m: [32m"[39m[32m2026-05-13 12:55:27[39m[32m"[39m,
+      },
+    ],
+  }
