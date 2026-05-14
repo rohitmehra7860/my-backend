@@ -44,11 +44,15 @@ class UsersTable
             ])
             ->recordActions([
                 ViewAction::make(),
-                EditAction::make(),
+                EditAction::make()
+                    ->visible(fn() => auth()->user()?->hasRole('admin') ||
+                        auth()->user()?->can('edit users')),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->visible(fn() => auth()->user()?->hasRole('admin') ||
+                            auth()->user()?->can('delete users')),
                 ]),
             ]);
     }

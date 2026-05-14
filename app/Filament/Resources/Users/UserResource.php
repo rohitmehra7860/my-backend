@@ -60,6 +60,30 @@ class UserResource extends Resource
     public static function canViewAny(): bool
     {
         return auth()->user()?->hasRole('admin') ||
-            auth()->user()?->can('manage users') ?? false;
+            auth()->user()?->can('view users') ?? false;
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()?->hasRole('admin') ||
+            auth()->user()?->can('create users') ?? false;
+    }
+
+    public static function canEdit($record): bool
+    {
+        return auth()->user()?->hasRole('admin') ||
+            auth()->user()?->can('edit users') ?? false;
+    }
+
+    public static function canDelete($record): bool
+    {
+        return auth()->user()?->hasRole('admin') ||
+            auth()->user()?->can('delete users') ?? false;
+    }
+
+    public static function canDeleteAny(): bool
+    {
+        return auth()->user()?->hasRole('admin') ||
+            auth()->user()?->can('delete users') ?? false;
     }
 }

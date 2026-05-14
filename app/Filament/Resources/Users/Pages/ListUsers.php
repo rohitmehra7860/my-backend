@@ -13,7 +13,9 @@ class ListUsers extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            CreateAction::make()
+                ->visible(fn() => auth()->user()?->hasRole('admin') ||
+                    auth()->user()?->can('create users')),
         ];
     }
 }

@@ -72,6 +72,13 @@ class ActivityLogResource extends Resource
 
     public static function canDelete($record): bool
     {
-        return auth()->user()?->hasRole('admin') ?? false;
+        return auth()->user()?->hasRole('admin') ||
+            auth()->user()?->can('delete activity logs') ?? false;
+    }
+
+    public static function canDeleteAny(): bool
+    {
+        return auth()->user()?->hasRole('admin') ||
+            auth()->user()?->can('delete activity logs') ?? false;
     }
 }
