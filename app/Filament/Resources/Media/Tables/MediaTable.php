@@ -79,16 +79,30 @@ class MediaTable
             ])
             ->recordActions([
                 ViewAction::make(),
-                EditAction::make(),
-                RestoreAction::make(),
-                DeleteAction::make(),
-                ForceDeleteAction::make(),
+                EditAction::make()
+                    ->authorize(fn() => auth()->user()?->hasRole('admin') ||
+                        auth()->user()?->can('edit media')),
+                RestoreAction::make()
+                    ->authorize(fn() => auth()->user()?->hasRole('admin') ||
+                        auth()->user()?->can('delete media')),
+                DeleteAction::make()
+                    ->authorize(fn() => auth()->user()?->hasRole('admin') ||
+                        auth()->user()?->can('delete media')),
+                ForceDeleteAction::make()
+                    ->authorize(fn() => auth()->user()?->hasRole('admin') ||
+                        auth()->user()?->can('delete media')),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->authorize(fn() => auth()->user()?->hasRole('admin') ||
+                            auth()->user()?->can('delete media')),
+                    RestoreBulkAction::make()
+                        ->authorize(fn() => auth()->user()?->hasRole('admin') ||
+                            auth()->user()?->can('delete media')),
+                    ForceDeleteBulkAction::make()
+                        ->authorize(fn() => auth()->user()?->hasRole('admin') ||
+                            auth()->user()?->can('delete media')),
                 ]),
             ]);
     }

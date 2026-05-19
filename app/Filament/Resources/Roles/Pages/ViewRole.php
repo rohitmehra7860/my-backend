@@ -13,7 +13,9 @@ class ViewRole extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            EditAction::make(),
+            EditAction::make()
+                ->authorize(fn() => auth()->user()?->hasRole('admin') ||
+                    auth()->user()?->can('edit roles')),
         ];
     }
 }

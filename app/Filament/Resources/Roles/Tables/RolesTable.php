@@ -33,13 +33,13 @@ class RolesTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make()
-                    ->visible(fn() => auth()->user()?->hasRole('admin') ||
+                    ->authorize(fn() => auth()->user()?->hasRole('admin') ||
                         auth()->user()?->can('edit roles')),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make()
-                        ->visible(fn() => auth()->user()?->hasRole('admin') ||
+                        ->authorize(fn() => auth()->user()?->hasRole('admin') ||
                             auth()->user()?->can('delete roles')),
                 ]),
             ]);

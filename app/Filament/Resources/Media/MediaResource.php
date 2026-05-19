@@ -56,14 +56,40 @@ class MediaResource extends Resource
         ];
     }
 
+    public static function canViewAny(): bool
+    {
+        return auth()->user()?->hasRole('admin') ||
+            auth()->user()?->can('view media') ?? false;
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()?->hasRole('admin') ||
+            auth()->user()?->can('create media') ?? false;
+    }
+
+    public static function canEdit($record): bool
+    {
+        return auth()->user()?->hasRole('admin') ||
+            auth()->user()?->can('edit media') ?? false;
+    }
+
+    public static function canDelete($record): bool
+    {
+        return auth()->user()?->hasRole('admin') ||
+            auth()->user()?->can('delete media') ?? false;
+    }
+
     public static function canForceDelete($record): bool
     {
-        return auth()->user()?->hasRole('admin') ?? false;
+        return auth()->user()?->hasRole('admin') ||
+            auth()->user()?->can('delete media') ?? false;
     }
 
     public static function canRestore($record): bool
     {
-        return auth()->user()?->hasRole('admin') ?? false;
+        return auth()->user()?->hasRole('admin') ||
+            auth()->user()?->can('delete media') ?? false;
     }
 
     public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder

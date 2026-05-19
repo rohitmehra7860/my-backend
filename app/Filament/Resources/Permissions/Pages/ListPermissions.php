@@ -14,8 +14,7 @@ class ListPermissions extends ListRecords
     {
         return [
             CreateAction::make()
-                ->visible(fn() => auth()->user()?->hasRole('admin') ||
-                    auth()->user()?->can('create roles')),
+                ->authorize(fn() => auth()->user()?->hasRole('admin') ?? false),
         ];
     }
 }

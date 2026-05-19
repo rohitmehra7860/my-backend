@@ -50,7 +50,9 @@ class ActivityLogsTable
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->authorize(fn() => auth()->user()?->hasRole('admin') ||
+                            auth()->user()?->can('delete activity logs')),
                 ]),
             ]);
     }

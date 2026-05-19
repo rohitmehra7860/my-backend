@@ -21,7 +21,7 @@ class MediaForm
                     ->acceptedFileTypes(['image/*', 'video/*', 'application/pdf'])
                     ->maxSize(102400)
                     ->imageEditor()
-                    ->multiple()
+                    ->multiple(fn(string $operation): bool => $operation === 'create')
                     ->columnSpanFull()
                     ->required(),
                 TextInput::make('name')

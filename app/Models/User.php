@@ -37,7 +37,8 @@ class User extends Authenticatable
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logAll()
-            ->logOnlyDirty();
+            ->logAllAttributes() // 🔥 This is the correct Spatie method name to log everything
+            ->logOnlyDirty()
+            ->dontLogIfAttributesChangedOnly(['password', 'remember_token']); // 🔒 CRITICAL SECURITY STEP
     }
 }

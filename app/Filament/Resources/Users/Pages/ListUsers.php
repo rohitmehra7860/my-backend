@@ -14,7 +14,7 @@ class ListUsers extends ListRecords
     {
         return [
             CreateAction::make()
-                ->visible(fn() => auth()->user()?->hasRole('admin') ||
+                ->authorize(fn() => auth()->user()?->hasRole('admin') ||
                     auth()->user()?->can('create users')),
         ];
     }

@@ -15,7 +15,9 @@ class EditRole extends EditRecord
     {
         return [
             ViewAction::make(),
-            DeleteAction::make(),
+            DeleteAction::make()
+                ->authorize(fn() => auth()->user()?->hasRole('admin') ||
+                    auth()->user()?->can('delete roles')),
         ];
     }
 
@@ -37,5 +39,7 @@ class EditRole extends EditRecord
         if (isset($this->permissionsToSync)) {
             $this->record->syncPermissions($this->permissionsToSync);
         }
+        // This triggers a hard browser reload right after the sync completes
+        $this->js('window.location.reload();');
     }
 }

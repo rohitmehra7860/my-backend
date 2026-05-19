@@ -13,7 +13,6 @@ class RoleForm
     public static function configure(Schema $schema): Schema
     {
         $record = $schema->getRecord();
-
         return $schema
             ->components([
                 TextInput::make('name')

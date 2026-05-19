@@ -15,7 +15,9 @@ class EditActivityLog extends EditRecord
     {
         return [
             ViewAction::make(),
-            DeleteAction::make(),
+            DeleteAction::make()
+                ->authorize(fn() => auth()->user()?->hasRole('admin') ||
+                    auth()->user()?->can('delete activity logs')),
         ];
     }
 }

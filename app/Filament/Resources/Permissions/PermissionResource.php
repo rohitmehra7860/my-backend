@@ -58,31 +58,26 @@ class PermissionResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return auth()->user()?->hasRole('admin') ||
-            auth()->user()?->can('view roles') ?? false;
+        return auth()->user()?->hasRole('admin') ?? false;
     }
 
     public static function canCreate(): bool
     {
-        return auth()->user()?->hasRole('admin') ||
-            auth()->user()?->can('create roles') ?? false;
+        return auth()->user()?->hasRole('admin') ?? false;
     }
 
     public static function canEdit($record): bool
     {
-        return auth()->user()?->hasRole('admin') ||
-            auth()->user()?->can('edit roles') ?? false;
+        return auth()->user()?->hasRole('admin') ?? false;
     }
 
     public static function canDelete($record): bool
     {
-        return auth()->user()?->hasRole('admin') ||
-            auth()->user()?->can('delete roles') ?? false;
+        return auth()->user()?->hasRole('admin') ?? false;
     }
 
     public static function canDeleteAny(): bool
     {
-        return auth()->user()?->hasRole('admin') ||
-            auth()->user()?->can('delete roles') ?? false;
+        return auth()->user()?->hasRole('admin') ?? false;
     }
 }

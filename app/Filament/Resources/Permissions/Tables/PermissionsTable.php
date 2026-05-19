@@ -33,14 +33,12 @@ class PermissionsTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make()
-                    ->visible(fn() => auth()->user()?->hasRole('admin') ||
-                        auth()->user()?->can('edit roles')),
+                    ->authorize(fn() => auth()->user()?->hasRole('admin') ?? false),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make()
-                        ->visible(fn() => auth()->user()?->hasRole('admin') ||
-                            auth()->user()?->can('delete roles')),
+                        ->authorize(fn() => auth()->user()?->hasRole('admin') ?? false),
                 ]),
             ]);
     }

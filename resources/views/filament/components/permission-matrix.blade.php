@@ -610,7 +610,7 @@
 <script>
     document.addEventListener('alpine:init', () => {
         Alpine.data('permissionMatrix', (permissions, selected, isReadonly) => ({
-            modules: ['users', 'roles', 'blog', 'shop'],
+            modules: ['users', 'roles', 'blog', 'shop', 'media'],
             allPermissions: permissions,
             checked: selected || [],
             isReadonly: isReadonly,

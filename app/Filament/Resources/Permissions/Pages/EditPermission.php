@@ -15,7 +15,8 @@ class EditPermission extends EditRecord
     {
         return [
             ViewAction::make(),
-            DeleteAction::make(),
+            DeleteAction::make()
+                ->authorize(fn() => auth()->user()?->hasRole('admin') ?? false),
         ];
     }
 }
